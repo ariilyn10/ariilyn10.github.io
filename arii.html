@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<head>
+<script src="/assets/jquery.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Londrina+Shadow' rel='stylesheet' type='text/css'>
+<style>
+body {
+  font-family: helvetica, sans-serif;
+  margin: 0 auto;
+  max-width: 600px;
+  background: #232323;
+  text-align: center;
+}
+div {
+  height: 350px;
+  background-size: cover;
+  position: relative;
+  margin: 40px 0 0 0;
+  border-radius: 12px;
+}
+h1 {
+  font-family: 'Londrina Shadow', cursive;
+  text-align: center;
+  font-size: 75px;
+  color: #aaaaaa;
+  margin: 60px 0 0 0;
+}
+h2 {
+  text-align: center;
+  color: #bbbbbb;
+  margin: 0px 0 70px 0;
+}
+p {
+  color: rgba(255,255,255,1);
+  background: black;
+  background: linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+  background: -webkit-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+  background: -moz-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+  padding: 10px;
+  line-height: 28px;
+  text-align: justify;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  height: 30px;
+  transition: height .5s;
+  -webkit-transition: height .5s;
+  -moz-transition: height .5s;
+}
+
+small {
+  opacity: 0;
+}
+
+.show-description p {
+  height: 150px;
+}
+
+.show-description small {
+  opacity: 1;
+}
+.price {
+  float: right;
+}
+@media (max-width: 500px) {
+  h1 {
+    font-size: 50px;
+    margin-top: 20px;
+    line-height: 40px;
+  }
+  h2 {
+    font-size: 20px;
+    margin: 20px 0 30px 0;
+  }
+  div {
+    margin: 20px 12px 0 12px;
+  }
+  p {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  small {
+    font-size: 16px;
+  }
+}
+
+ul {
+      padding: 10px;
+      background: rgba(0,0,0,0.5);
+    }
+    li {
+      display: inline;
+      padding: 0px 10px 0px 10px;
+    
+    }
+  
+
+</style>
+
+</head>
+
+<body>
+
+ <ul>
+
+
+      <li><button onclick=Inquiries()>Inquiries</button></li>
+      <li><button onclick=Catering()>Catering</button></li>
+      <li><button onclick=Menu()>Menu</button></li>
+    </ul>
+
+
+<h1>Arii's Bistro</h1>
+<h2>a New York City eatery</h2>
+
+<div id="div"> </div>
+
+<script>
+
+InquiriesImages = [
+  
+  'url("https://techcrunch.com/wp-content/uploads/2014/10/reserve.jpg?w=730&crop=1")',
+  
+  'url("https://www.eatatbento.com/wp-content/uploads/2016/06/catering-01.jpg")',
+  
+  'url("https://cdn.thepennyhoarder.com/wp-content/uploads/2017/07/05145246/GettyImages-636514364.jpg")',
+  
+]
+
+cateringImages = [
+
+'url("https://tastefuldinners.com/wp-content/uploads/2016/08/Catering-01.jpg")',
+
+'url("https://www.theprimavera.com/images/catering/off-premise-customized-catering-gourmet-buffet-hors-devours.jpg")',
+
+'url("https://www.aertsonhotel.com/images/1700-960/catering-spread-22ea90a2.jpg")',
+
+]
+
+MenuImages = [
+
+'url("https://previews.123rf.com/images/rez_art/rez_art1602/rez_art160200085/52816020-tasty-surf-turf-steak-and-lobster-meal-with-asparagus-on-dinner-plate.jpg")',
+
+'url("https://assets.epicurious.com/photos/59cbba7e8ecca72fb3121952/1:1/w_3334,h_3334,c_limit/clam-toasts-with-pancetta.jpg")',
+
+'url("https://food.fnr.sndimg.com/content/dam/images/food/fullset/2008/3/13/0/EA1118_Rack-of-Lamb.jpg.rend.hgtvcom.826.620.suffix/1371585626723.jpeg")',
+
+]
+
+InquiriesDivs = [
+  '<div class="item"><p>Reserve an exclusive part of our resturant <span class="price">$$-$$$</span><br /><small>Plese reserve least 2 weeks in advance for any event. </small></p></div>',
+			'<div class="item"><p>pNow to go ! catering for all events  <span class="price">$$-$$$</span><br /><small>Down payment of 25% required when booking. </small></p></div>',
+			'<div class="item"><p>Explore our delicious menu <span class="price">$$-$$$</span><br /><small>all food is 100% organic and freshly prepared cooked to order.</small></p></div>',
+]
+
+CateringDivs = [
+  '<div class="item"><p>Large Eevent Package <span class="price">$500-$1000</span><br /><small>Large Event contaning 200 or more people. includes 3 courses </small></p></div>',
+			'<div class="item"><p>Medium Sized Event Package <span class="price">$500-$700</span><br /><small>Medium Sized Event containing 100-120 people . </small></p></div>',
+			'<div class="item"><p>Small Sized Event Package <span class="price"$100-$300</span><br /><small>Small Event Containing 50-100 people.</small></p></div>',
+]
+
+MenuDivs = [
+  '<div class="item"><p>Filet Mignon and Lobster tail            <span class="price">$44.59</span><br /> <small>E3 Grilled Filet Mignon with Baked Garlic Lobster Tail</small></p></div>',
+			'<div class="item"><p>Simple Steamed Muscles <span class="price">$32.35</span><br /><small>super simple steamed mussels!These mussels are from the Oosterschelde and are 100% from Zeeland and grown in those waters. Cooked with just a few simple ingredients, you really can taste the sea. </small></p></div>',
+			'<div class="item"><p>Rack of lamb family dinner <span class="price">$100.00</span><br /><small> whole rack of lamb with 4 sides to feed the table.</small></p></div>',
+]
+
+
+
+
+function Inquiries() {
+     
+   	start = document.getElementById("div")
+   	 start.innerHTML = ''
+	   start.innerHTML += InquiriesDivs[0]
+     start.innerHTML += InquiriesDivs[1]
+     start.innerHTML += InquiriesDivs[2]
+	//alert('You must reserve atleast 3 hours before' )
+	items = document.getElementsByClassName("item")
+    items[0].style.background = InquiriesImages[0]
+    items[0].style.backgroundSize = '100% 100%'
+    items[1].style.background = InquiriesImages[1]
+    items[1].style.backgroundSize = '100% 100%'
+    items[2].style.background = InquiriesImages[2]
+    items[2].style.backgroundSize = '100% 100%'
+
+	
+}
+	
+function Catering() {
+   	start = document.getElementById("div")  
+     start.innerHTML = ''
+	   start.innerHTML += CateringDivs[0]
+     start.innerHTML += CateringDivs[1]
+     start.innerHTML += CateringDivs[2]
+  //alert('There is a down payment of 50% when order is placed' )
+   items = document.getElementsByClassName("item")  
+    items[0].style.background = cateringImages[0]
+    items[0].style.backgroundSize = '100% 100%'
+    items[1].style.background = cateringImages[1]
+    items[1].style.backgroundSize = '100% 100%'
+    items[2].style.background = cateringImages[2]
+    items[2].style.backgroundSize = '100% 100%'
+  
+}
+
+function Menu() {
+    	start = document.getElementById("div") 
+     start.innerHTML = ''
+	   start.innerHTML += MenuDivs[0]
+     start.innerHTML += MenuDivs[1]
+     start.innerHTML += MenuDivs[2]
+//alert('Menu' )
+ items = document.getElementsByClassName("item")
+  items[0].style.background = MenuImages[0]
+    items[0].style.backgroundSize = '110% 110%'
+    items[1].style.background = MenuImages[1]
+    items[1].style.backgroundSize = '100% 100%'
+    items[2].style.background = MenuImages[2]
+    items[2].style.backgroundSize = '100% 100%'
+  
+}
+
+  $('div').on('click', function() {
+      $(this).toggleClass('show-description');
+  });
+</script>
+
+</body>
